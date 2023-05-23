@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "111670489665",
+    "project_id": "versyll-3818e",
+    "storage_bucket": "versyll-3818e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111670489665:android:13a460ee1048bc2aafccc0",
+        "android_client_info": {
+          "package_name": "com.example.versyll"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111670489665-i71m932q9nbndnbdgekelnc3v3rr1t9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGnK5Q-dC1wr8f7o0NKaZQYnBxFFt1giE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111670489665-i71m932q9nbndnbdgekelnc3v3rr1t9p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
