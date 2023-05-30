@@ -1,9 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:versyll/Screens/SongDetail.dart';
+import 'package:getwidget/components/avatar/gf_avatar.dart';
+import 'package:getwidget/shape/gf_avatar_shape.dart';
 
-import 'PlayList.dart';
+class MySong extends StatelessWidget {
+  final img;
+  final title;
+  final singer;
+  final duration;
+  const MySong({
+    super.key,
+    this.img,
+    this.title,
+    this.singer,
+    this.duration,
+  });
 
-class LibraryPage extends StatelessWidget { 
-  
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: ListTile(
+        onTap: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => SongDetail()));
+        },
+        leading: GFAvatar(
+          backgroundImage: AssetImage(this.img),
+          shape: GFAvatarShape.standard,
+        ),
+        title: Text(
+          title,
+          style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
+        ),
+        subtitle: Text(
+          singer,
+          style: TextStyle(letterSpacing: 0.5, color: Colors.white),
+        ),
+        trailing: Text(
+          duration,
+          style: TextStyle(letterSpacing: 0.5, color: Colors.white),
+        ),
+      ),
+    );
+  }
+}
+
+class LibraryPage extends StatelessWidget {
   const LibraryPage({Key? key}) : super(key: key);
 
   @override
@@ -16,103 +59,134 @@ class LibraryPage extends StatelessWidget {
           radius: 1.2,
         ),
       ),
-      child: ListView.builder(
-        itemCount: 100,
-        itemBuilder: (BuildContext context, int index) {
-          return PlayList();
-        },
+      child: ListView(
+        children: [
+          // Content
+          Padding(
+            padding: const EdgeInsets.only(left: 32),
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+          MySong(
+            img: 'images/song_cover_1.jpg',
+            title: 'Odoriko',
+            singer: 'Vaundy',
+            duration: '3:10',
+          ),
+        ],
       ),
     );
   }
 }
 
-class PlayList extends StatelessWidget {
-  PlayList({Key? key}) : super(key: key);
 
-  final List<Map<String, String>> _playlists = [
-    {
-      'imagePath': 'images/Square.png',
-      'name': 'Counting Star',
-      'description': 'One Republic',
-    },
-    {
-      'imagePath': 'images/song_cover_1.jpg',
-      'name': 'Stiches',
-      'description': 'Shawn Mendes',
-    },
-    {
-      'imagePath': 'images/ambyar-cover-album.jpg',
-      'name': 'Night Changes',
-      'description': 'One Direction',
-    },
-  ];
 
-  Widget _buildPlaylistItem(
-      Map<String, String> playlist, double width, BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(
-        vertical: width * 0.02,
-        horizontal: width * 0.04,
-      ),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => PlayListPage()));
-        },
-        child: Row(
-          children: [
-            SquareImage(imagePath: playlist['imagePath']!),
-            const SizedBox(width: 20),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  playlist['name']!,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: width * 0.04,
-                    fontFamily: 'Open Sans',
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  playlist['description']!,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: width * 0.03,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        final double width = constraints.maxWidth;
-
-        return Column(
-          children: _playlists
-              .map((playlist) => _buildPlaylistItem(playlist, width, context))
-              .toList(),
-        );
-      },
-    );
-  }
-}
-
-class SquareImage extends StatelessWidget {
-  final String imagePath;
+/* class SquareImage extends StatelessWidget {
+  final String img;
 
   const SquareImage({
     Key? key,
-    required this.imagePath,
+    required this.img,
   }) : super(key: key);
 
   @override
@@ -122,11 +196,11 @@ class SquareImage extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(width * 0.05),
       child: Image.asset(
-        imagePath,
+        img,
         width: width * 0.25,
         height: width * 0.25,
         fit: BoxFit.cover,
       ),
     );
   }
-}
+} */

@@ -7,6 +7,7 @@ import 'package:versyll/Screens/User.dart';
 import 'package:versyll/Screens/login.dart';
 import 'package:versyll/Screens/SongDetail.dart';
 import 'package:versyll/Screens/PlayList.dart';
+import 'package:versyll/Screens/FormAddSong.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         'User': (context) => UserPage(),
         'SongDetail': (context) => SongDetail(),
         'PlayList': (context) => PlayListPage(),
+        'FormAddSong': (context) => FormAddSong(),
       },
     );
   } 

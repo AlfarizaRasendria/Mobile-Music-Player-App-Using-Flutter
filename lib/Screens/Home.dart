@@ -33,13 +33,25 @@ class _HomePageState extends State<HomePage> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 15),
-            child: IconButton(
-              icon: CustIcon(
-                iconParam: Icon(Icons.person),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, 'User');
-              },
+            child: Row(
+              children: [
+                IconButton(
+                  icon: CustIcon(
+                    iconParam: Icon(Icons.person),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'User');
+                  },
+                ),
+                IconButton(
+                  icon: CustIcon(
+                    iconParam: Icon(Icons.add),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'FormAddSong');
+                  },
+                ),
+              ],
             ),
           ),
         ],
@@ -49,7 +61,7 @@ class _HomePageState extends State<HomePage> {
       AppBar(
           title: Text("Search"), backgroundColor: Colors.black, elevation: 0),
       AppBar(
-          title: Text('Library'),
+          title: Text('My Song'),
           leading: IconButton(
             onPressed: () {},
             icon: IconButton(

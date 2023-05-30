@@ -21,31 +21,7 @@ class HomeBody extends StatelessWidget {
       ),
       child: ListView(
         children: [
-          // Side Scrolling
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 20),
-            height: 252,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                PlayList(
-                  img: 'images/ambyar-cover-album.jpg',
-                  title: 'Ambyar',
-                  subtitle: 'Daily dose',
-                ),
-                PlayList(
-                  img: 'images/ambyar-cover-album.jpg',
-                  title: 'Ambyar',
-                  subtitle: 'Daily dose',
-                ),
-                PlayList(
-                  img: 'images/ambyar-cover-album.jpg',
-                  title: 'Ambyar',
-                  subtitle: 'Daily dose',
-                ),
-              ],
-            ),
-          ),
+          
 
           // Content
           Padding(
