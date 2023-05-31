@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:versyll/Screens/Home.dart';
+import 'package:versyll/services/auth_service.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+    final authService = Provider.of<AuthService>(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       // appBar: AppBar(),
@@ -19,8 +21,9 @@ class LoginPage extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('images/background.jpg'),
-                  fit: BoxFit.cover),
+                image: AssetImage('images/background.jpg'),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
 
@@ -51,20 +54,20 @@ class LoginPage extends StatelessWidget {
 
               // Input
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 48),
-                child: TextField(
-                  controller: emailController,
-                  decoration: InputDecoration(labelText: "Email"),
-                ),
-              ),
+                  padding: EdgeInsets.symmetric(horizontal: 48),
+                  child: InputField(
+                    labelTxt: "Email",
+                    isHidden: false,
+                    controller: emailController,
+                  )),
               SizedBox(height: 36),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 48),
-                child: TextField(
-                  controller: passwordController,
-                  decoration: InputDecoration(labelText: "Password"),
-                ),
-              ),
+                  padding: EdgeInsets.symmetric(horizontal: 48),
+                  child: InputField(
+                    controller: passwordController,
+                    isHidden: true,
+                    labelTxt: "Password",
+                  )),
               SizedBox(height: 36),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 48),
@@ -78,7 +81,10 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.popAndPushNamed(context, '/');
+                      authService.signInWithEmailAndPassword(
+                        emailController.text,
+                        passwordController.text,
+                      );
                     },
                     child: const Text(
                       "Login",
@@ -120,15 +126,20 @@ class LoginPage extends StatelessWidget {
 class InputField extends StatelessWidget {
   final labelTxt;
   final hintTxt;
+  final controller;
+  final isHidden;
 
-  const InputField({super.key, this.labelTxt, this.hintTxt});
+  const InputField(
+      {super.key, this.labelTxt, this.hintTxt, this.controller, this.isHidden});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       keyboardType: TextInputType.emailAddress,
       cursorColor: Colors.white,
       cursorWidth: 0.8,
+      obscureText: isHidden,
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.black38,

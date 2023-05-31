@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "111670489665",
-    "project_id": "versyll-3818e",
-    "storage_bucket": "versyll-3818e.appspot.com"
+    "project_number": "798042596132",
+    "firebase_url": "https://db-versyll-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "db-versyll",
+    "storage_bucket": "db-versyll.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:111670489665:android:13a460ee1048bc2aafccc0",
+        "mobilesdk_app_id": "1:798042596132:android:232c75b7d6750b0f3a09b1",
         "android_client_info": {
           "package_name": "com.example.versyll"
         }
       },
       "oauth_client": [
         {
-          "client_id": "111670489665-i71m932q9nbndnbdgekelnc3v3rr1t9p.apps.googleusercontent.com",
+          "client_id": "798042596132-male937f1s726sqi2voihefspidksi02.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDGnK5Q-dC1wr8f7o0NKaZQYnBxFFt1giE"
+          "current_key": "AIzaSyB-m7jpAZuvkGXCp_nJSRypYbJbkqkfWLc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "111670489665-i71m932q9nbndnbdgekelnc3v3rr1t9p.apps.googleusercontent.com",
+              "client_id": "798042596132-male937f1s726sqi2voihefspidksi02.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
