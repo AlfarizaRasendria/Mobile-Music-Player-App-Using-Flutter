@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:versyll/Screens/Search.dart';
 import 'package:versyll/Screens/library.dart';
 import 'package:versyll/Screens/homeBody.dart';
+import 'package:versyll/services/auth_service.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final authService = Provider.of<AuthService>(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       // appBar: AppBar(),
@@ -139,39 +142,6 @@ class UserPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // Container(
-                    //   decoration: BoxDecoration(
-                    //     border: Border.all(
-                    //       color: Colors.grey,
-                    //       width: 1.0,
-                    //     ),
-                    //     borderRadius: BorderRadius.circular(10),
-                    //   ),
-                    //   child: Row(
-                    //     children: [
-                    //       IconButton(
-                    //         icon: CustIcon(
-                    //           iconParam: Icon(
-                    //             Icons.edit,
-                    //             color: Colors.white,
-                    //           ),
-                    //         ),
-                    //         onPressed: () {
-                    //           Navigator.pushNamed(context, '');
-                    //         },
-                    //       ),
-                    //       Padding(
-                    //         padding: const EdgeInsets.only(left: 8.0),
-                    //         child: TextButton(
-                    //           onPressed: () {},
-                    //           child: const Text("Customize Profiles",
-                    //               style: TextStyle(
-                    //                   color: Colors.white, fontSize: 18)),
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
                     Container(
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -184,8 +154,9 @@ class UserPage extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,
                         ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/login');
+                        onPressed: () async {
+                          await authService.signOut();
+                          Navigator.popUntil(context, ModalRoute.withName("/"));
                         },
                         child: Row(
                           children: [
@@ -197,9 +168,11 @@ class UserPage extends StatelessWidget {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 16.0),
-                              child: const Text("Log Out",
-                                  style: TextStyle(
-                                      fontSize: 18, color: Colors.red)),
+                              child: const Text(
+                                "Log Out",
+                                style:
+                                    TextStyle(fontSize: 18, color: Colors.red),
+                              ),
                             )
                           ],
                         ),

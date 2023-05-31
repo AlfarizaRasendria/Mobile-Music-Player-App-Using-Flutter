@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:versyll/Screens/Home.dart';
+
+import '../services/auth_service.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+    final authService = Provider.of<AuthService>(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       // appBar: AppBar(),
@@ -48,28 +54,18 @@ class SignUp extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 48),
                 child: InputField(
-                  labelTxt: "Username",
-                ),
-              ),
-              SizedBox(height: 36),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 48),
-                child: InputField(
+                  controller: emailController,
                   labelTxt: "Email",
+                  isHidden: false,
                 ),
               ),
               SizedBox(height: 36),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 48),
                 child: InputField(
-                  labelTxt: "No Telp",
-                ),
-              ),
-              SizedBox(height: 36),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 48),
-                child: InputField(
+                  controller: passwordController,
                   labelTxt: "Password",
+                  isHidden: false,
                 ),
               ),
               SizedBox(height: 36),
@@ -78,15 +74,19 @@ class SignUp extends StatelessWidget {
                 child: SizedBox(
                   height: 56,
                   child: ElevatedButton(
+                    onPressed: () async {
+                      await authService.createUserWithEmailAndPassword(
+                        emailController.text,
+                        passwordController.text,
+                      );
+                      Navigator.pushReplacementNamed(context, "/");
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    onPressed: () {
-                      Navigator.popAndPushNamed(context, '/login');
-                    },
                     child: const Text(
                       "Register",
                       style: TextStyle(color: Colors.white),
@@ -127,15 +127,20 @@ class SignUp extends StatelessWidget {
 class InputField extends StatelessWidget {
   final labelTxt;
   final hintTxt;
+  final controller;
+  final isHidden;
 
-  const InputField({super.key, this.labelTxt, this.hintTxt});
+  const InputField(
+      {super.key, this.labelTxt, this.hintTxt, this.controller, this.isHidden});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       keyboardType: TextInputType.emailAddress,
       cursorColor: Colors.white,
       cursorWidth: 0.8,
+      obscureText: isHidden,
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.black38,
