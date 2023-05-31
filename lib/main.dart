@@ -23,18 +23,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: LoginPage(),
+      // home: LoginPage(),
       routes: {
-        'login': (context) => LoginPage(),
-        'home': (context) => HomePage(),
-        'SignUp': (context) => SignUp(),
-        'User': (context) => UserPage(),
-        'SongDetail': (context) => SongDetail(),
-        'PlayList': (context) => PlayListPage(),
-        'FormAddSong': (context) => FormAddSong(),
+        '/login': (context) => LoginPage(),
+        '/': (context) => HomePage(),
+        '/register': (context) => SignUp(),
+        '/user': (context) => UserPage(),
+        '/song': (context) => SongDetail(),
+        '/playlist': (context) => PlayListPage(),
+        '/addsong': (context) => FormAddSong(),
       },
     );
-  } 
+  }
 }
 
 

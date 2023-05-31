@@ -21,8 +21,6 @@ class HomeBody extends StatelessWidget {
       ),
       child: ListView(
         children: [
-          
-
           // Content
           Padding(
             padding: const EdgeInsets.only(left: 32),
@@ -33,102 +31,6 @@ class HomeBody extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                   color: Colors.white),
             ),
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          SongList(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
           ),
           SongList(
             img: 'images/song_cover_1.jpg',
@@ -167,8 +69,10 @@ class SongList extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: ListTile(
         onTap: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => SongDetail()));
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SongDetail()),
+          );
         },
         leading: GFAvatar(
           backgroundImage: AssetImage(this.img),
@@ -202,7 +106,7 @@ class PlayList extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => PlayListPage()));
+            .push(MaterialPageRoute(builder: (context) => PlayListPage()));
       },
       child: Container(
         margin: EdgeInsets.only(left: 20),

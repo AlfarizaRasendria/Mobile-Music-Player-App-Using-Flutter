@@ -3,7 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:versyll/Screens/Home.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,17 +48,21 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 40),
+
+              // Input
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 48),
-                child: InputField(
-                  labelTxt: "Email",
+                child: TextField(
+                  controller: emailController,
+                  decoration: InputDecoration(labelText: "Email"),
                 ),
               ),
               SizedBox(height: 36),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 48),
-                child: InputField(
-                  labelTxt: "Password",
+                child: TextField(
+                  controller: passwordController,
+                  decoration: InputDecoration(labelText: "Password"),
                 ),
               ),
               SizedBox(height: 36),
@@ -71,7 +78,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.popAndPushNamed(context, 'home');
+                      Navigator.popAndPushNamed(context, '/');
                     },
                     child: const Text(
                       "Login",
@@ -92,7 +99,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.popAndPushNamed(context, 'SignUp');
+                        Navigator.popAndPushNamed(context, '/register');
                       },
                       child: const Text(
                         "Sign Up",

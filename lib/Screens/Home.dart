@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
                     iconParam: Icon(Icons.person),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, 'User');
+                    Navigator.pushNamed(context, '/user');
                   },
                 ),
                 IconButton(
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                     iconParam: Icon(Icons.add),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, 'FormAddSong');
+                    Navigator.pushNamed(context, '/addsong');
                   },
                 ),
               ],
@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {},
             icon: IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'User');
+                Navigator.pushNamed(context, '/user');
               },
               icon: CustIcon(
                 iconParam: Icon(Icons.person),

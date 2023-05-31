@@ -58,7 +58,7 @@ class SignUp extends StatelessWidget {
                   labelTxt: "Email",
                 ),
               ),
-               SizedBox(height: 36),
+              SizedBox(height: 36),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 48),
                 child: InputField(
@@ -85,7 +85,7 @@ class SignUp extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.popAndPushNamed(context, 'home');
+                      Navigator.popAndPushNamed(context, '/login');
                     },
                     child: const Text(
                       "Register",
@@ -106,7 +106,7 @@ class SignUp extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.popAndPushNamed(context, 'login');
+                        Navigator.popAndPushNamed(context, '/login');
                       },
                       child: const Text(
                         "Login",
