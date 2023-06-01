@@ -1,21 +1,41 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:versyll/Models/user_model.dart';
 
 class AuthService {
   final auth.FirebaseAuth _firebaseAuth = auth.FirebaseAuth.instance;
+  String tempToken = "";
+  String token = "";
+  String uid = "";
 
-  User? _userFromFirebase(auth.User? user) {
+  String get userid {
+    return uid;
+  }
+
+  String tempData() {
+    refreshToken();
+    token = tempToken;
+    //print(token);
+    return token;
+  }
+
+  Future<void> refreshToken() async {
+    tempToken = await FirebaseAuth.instance.currentUser!.getIdToken(true);
+    token = tempToken;
+  }
+
+  UserAttribute? _userFromFirebase(auth.User? user) {
     if (user == null) {
       return null;
     }
-    return User(user.uid, user.email);
+    return UserAttribute(user.uid, user.email);
   }
 
-  Stream<User?>? get user {
+  Stream<UserAttribute?>? get user {
     return _firebaseAuth.authStateChanges().map(_userFromFirebase);
   }
 
-  Future<User?> signInWithEmailAndPassword(
+  Future<UserAttribute?> signInWithEmailAndPassword(
     String email,
     String password,
   ) async {
@@ -26,7 +46,7 @@ class AuthService {
     return _userFromFirebase(credential.user);
   }
 
-  Future<User?> createUserWithEmailAndPassword(
+  Future<UserAttribute?> createUserWithEmailAndPassword(
     String email,
     String password,
   ) async {

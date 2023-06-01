@@ -1,13 +1,17 @@
 import 'package:flutter/foundation.dart';
 
 class Song {
-    final String judul;
-    final String img;
-    final String penyanyi;
-    final Duration durasi;
-    final String desc;
+    String id;
+    String uid;
+    String judul;
+    String img;
+    String penyanyi;
+    Duration durasi;
+    String desc;
 
-  Song({
+  Song({  
+    required this. id,
+    required this. uid,
     required this.judul,
     required this.img,
     required this.penyanyi,

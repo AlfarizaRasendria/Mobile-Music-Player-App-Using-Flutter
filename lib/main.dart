@@ -12,6 +12,7 @@ import 'package:versyll/Screens/PlayList.dart';
 import 'package:versyll/Screens/FormAddSong.dart';
 import 'package:versyll/services/auth_service.dart';
 import 'package:versyll/wrapper.dart';
+import 'package:versyll/Controllers/song.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,8 +30,14 @@ class MyApp extends StatelessWidget {
         Provider<AuthService>(
           create: (_) => AuthService(),
         ),
+        ChangeNotifierProxyProvider<AuthService, Songs>(
+                create: (context) => Songs(),
+                update: (context, authentication, songs) => songs!
+                ..updateToken(
+                      authentication.tempData(), authentication.userid)
+                ),
       ],
-      child: MaterialApp(
+      child: MaterialApp( 
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.orange,

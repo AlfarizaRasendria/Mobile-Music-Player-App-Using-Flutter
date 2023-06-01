@@ -1,11 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:versyll/Controllers/song.dart';
+import 'package:provider/provider.dart';
 import 'package:versyll/Screens/Search.dart';
 import 'package:versyll/Screens/library.dart';
 import 'package:versyll/Screens/homeBody.dart';
 import 'package:versyll/Components/colors.dart';
 
 class FormAddSong extends StatelessWidget {
-  const FormAddSong({super.key});
+  FormAddSong({super.key});
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController imageController = TextEditingController();
+  final TextEditingController tagController = TextEditingController();
+  final TextEditingController contentController = TextEditingController();
+
+  late Duration duration = Duration.zero;
+
+  void parseDuration() {
+    String durationString = contentController.text;
+    List<String> parts = durationString.split(':');
+    try {
+      duration = Duration(
+        minutes: int.parse(parts[0]),
+        seconds: int.parse(parts[1]),
+      );
+    } catch (e) {
+      // Handle the exception here, e.g., display an error message or take appropriate actions
+      print('Invalid duration format: $durationString');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +69,7 @@ class FormAddSong extends StatelessWidget {
                       fontSize: 15,
                       height: 1.5,
                     ),
-                    // controller: titleController,
+                    controller: titleController,
                     decoration: InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.white60)),
@@ -70,7 +93,7 @@ class FormAddSong extends StatelessWidget {
                       fontSize: 15,
                       height: 1.5,
                     ),
-                    // controller: descriptionController,
+                    controller: descriptionController,
                     decoration: const InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.white70)),
@@ -93,7 +116,7 @@ class FormAddSong extends StatelessWidget {
                       fontSize: 15,
                       height: 1.5,
                     ),
-                    // controller: imageController,
+                    controller: imageController,
                     decoration: const InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.white)),
@@ -117,7 +140,7 @@ class FormAddSong extends StatelessWidget {
                       fontSize: 15,
                       height: 1.5,
                     ),
-                    // controller: tagController,
+                    controller: tagController,
                     decoration: const InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.white54)),
@@ -141,7 +164,7 @@ class FormAddSong extends StatelessWidget {
                       fontSize: 15,
                       height: 1.5,
                     ),
-                    // controller: contentController,
+                    controller: contentController,
                     decoration: const InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.white70)),
@@ -164,6 +187,13 @@ class FormAddSong extends StatelessWidget {
                       backgroundColor: Colors.white,
                       elevation: 2,
                       onPressed: () {
+                        parseDuration();
+                        Provider.of<Songs>(context, listen: false).addSong(
+                            titleController.text,
+                            descriptionController.text,
+                            imageController.text,
+                            tagController.text,
+                            duration);
                         /* Provider.of<Articles>(context, listen: false)
                                 .addArticle(
                                     titleController.text,
