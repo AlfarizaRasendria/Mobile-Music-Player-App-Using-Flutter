@@ -10,7 +10,7 @@ class UserPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authService = Provider.of<AuthService>(context);
+    final authService = Provider.of<AuthService>(context, listen: false);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       // appBar: AppBar(),
@@ -93,7 +93,7 @@ class UserPage extends StatelessWidget {
                     ),
                     SizedBox(height: 25),
                     Text(
-                      "User",
+                      authService.name ?? "Default User",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
