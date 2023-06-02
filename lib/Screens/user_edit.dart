@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:versyll/Screens/Home.dart';
-
 import '../services/auth_service.dart';
 
 class SignUp extends StatelessWidget {
@@ -42,7 +39,7 @@ class SignUp extends StatelessWidget {
                 padding:
                     EdgeInsets.only(top: 100, left: 32, right: 32, bottom: 24),
                 child: Text(
-                  "Sign Up",
+                  "Edit User",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -72,29 +69,13 @@ class SignUp extends StatelessWidget {
               SizedBox(height: 36),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 48),
-                child: InputField(
-                  controller: passwordController,
-                  labelTxt: "Password",
-                  isHidden: false,
-                ),
-              ),
-              SizedBox(height: 36),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 48),
                 child: SizedBox(
                   height: 56,
                   child: ElevatedButton(
-                    onPressed: () async {
-                      await authService
-                          .createUserWithEmailAndPassword(
-                        emailController.text,
-                        passwordController.text,
-                      )
-                          .then((_) async {
-                        await Provider.of<AuthService>(context, listen: false)
-                            .updateUser(nameController.text);
-                      });
-                      Navigator.pushReplacementNamed(context, "/");
+                    onPressed: () {
+                      Provider.of<AuthService>(context, listen: false)
+                          .updateUser(nameController.text);
+                      Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.purple,
@@ -103,7 +84,7 @@ class SignUp extends StatelessWidget {
                       ),
                     ),
                     child: const Text(
-                      "Register",
+                      "Submit",
                       style: TextStyle(color: Colors.white),
                     ),
                   ),

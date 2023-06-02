@@ -1,4 +1,6 @@
-class User {
+import 'package:flutter/material.dart';
+
+class User with ChangeNotifier {
   final String uid;
   final String? email;
 
