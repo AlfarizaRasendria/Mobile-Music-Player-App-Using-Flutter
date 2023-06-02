@@ -1,12 +1,33 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:flutter/material.dart';
 import 'package:versyll/Models/user_model.dart';
 
-class AuthService {
+class AuthService with ChangeNotifier {
   final auth.FirebaseAuth _firebaseAuth = auth.FirebaseAuth.instance;
   String tempToken = "";
   String token = "";
   String uid = "";
+  var name;
+  var email;
+
+  List<User> detail = [];
+
+  String get userid {
+    return uid;
+  }
+
+  String tempData() {
+    refreshToken();
+    token = tempToken;
+    //print(token);
+    return token;
+  }
+
+  Future<void> refreshToken() async {
+    tempToken = await _firebaseAuth.currentUser!.getIdToken(true);
+    token = tempToken;
+  }
 
   String get userid {
     return uid;
@@ -43,6 +64,7 @@ class AuthService {
       email: email,
       password: password,
     );
+    getUserDetail();
     return _userFromFirebase(credential.user);
   }
 
@@ -54,8 +76,22 @@ class AuthService {
       email: email,
       password: password,
     );
-
+    getUserDetail();
     return _userFromFirebase(credential.user);
+  }
+
+  Future<User?> updateUser(String name) async {
+    await _firebaseAuth.currentUser!.updateDisplayName(name);
+    await _firebaseAuth.currentUser!.reload();
+    getUserDetail();
+    notifyListeners();
+    return null;
+  }
+
+  Future<void> getUserDetail() async {
+    name = _firebaseAuth.currentUser!.displayName;
+    email = _firebaseAuth.currentUser!.email;
+    notifyListeners();
   }
 
   Future<void> signOut() async {

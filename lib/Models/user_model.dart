@@ -1,4 +1,6 @@
-class UserAttribute {
+
+class User with ChangeNotifier {
+
   final String uid;
   final String? email;
 
