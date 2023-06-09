@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:versyll/Controllers/song_controller.dart';
 import 'package:versyll/Screens/Search.dart';
 import 'package:versyll/Screens/library.dart';
 import 'package:versyll/Screens/homeBody.dart';
 import 'package:versyll/Components/colors.dart';
+import 'package:versyll/services/auth_service.dart';
 
 class FormAddSong extends StatelessWidget {
   const FormAddSong({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController judulController = TextEditingController();
+    final TextEditingController penyanyiController = TextEditingController();
+    final TextEditingController imgController = TextEditingController();
+    final TextEditingController durasiController = TextEditingController();
+    final TextEditingController descController = TextEditingController();
     var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
@@ -39,6 +47,7 @@ class FormAddSong extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                   child: TextField(
+                    controller: judulController,
                     maxLines: null,
                     style: const TextStyle(
                       color: Colors.white,
@@ -63,6 +72,7 @@ class FormAddSong extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                   child: TextField(
+                    controller: penyanyiController,
                     maxLines: null,
                     style: const TextStyle(
                       color: Colors.white,
@@ -87,6 +97,7 @@ class FormAddSong extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                   child: TextField(
+                    controller: imgController,
                     style: const TextStyle(
                       color: Colors.white,
                       fontFamily: 'Montserrat',
@@ -110,6 +121,7 @@ class FormAddSong extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                   child: TextField(
+                    controller: descController,
                     maxLines: 1,
                     style: const TextStyle(
                       color: Colors.white,
@@ -134,6 +146,7 @@ class FormAddSong extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                   child: TextField(
+                    controller: durasiController,
                     maxLines: null,
                     style: const TextStyle(
                       color: Colors.white,
@@ -164,42 +177,15 @@ class FormAddSong extends StatelessWidget {
                       backgroundColor: Colors.white,
                       elevation: 2,
                       onPressed: () {
-                        /* Provider.of<Articles>(context, listen: false)
-                                .addArticle(
-                                    titleController.text,
-                                    descriptionController.text,
-                                    imageController.text,
-                                    Provider.of<Authentication>(context,
-                                            listen: false)
-                                        .dispName,
-                                    tagController.text,
-                                    contentController.text); */
-                        /* ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              /// need to set following properties for best effect of awesome_snackbar_content
-                              elevation: 0,
-                              behavior: SnackBarBehavior.floating,
-                              backgroundColor: Colors.transparent,
-                              /* content: AwesomeSnackbarContent(
-                                title: 'Great!',
-                                message:
-                                    'Yay your article has been created and uploaded!',
-          
-                                /// change contentType to ContentType.success, ContentType.warning or ContentType.help for variants
-                                contentType: ContentType.success,
-                                inMaterialBanner: true,
-                              ), */
-                            ));
-                            // StatusAlert.show(
-                            //   context,
-                            //   duration: const Duration(seconds: 3),
-                            //   title: 'Article Created',
-                            //   subtitle:
-                            //       'Yay your article has been created and uploaded!',
-                            //   configuration:
-                            //       const IconConfiguration(icon: Icons.done),
-                            //   maxWidth: 260,
-                            // );
-                            Navigator.pop(context); */
+                        Provider.of<SongController>(context, listen: false)
+                            .addSong(
+                          judulController.text,
+                          imgController.text,
+                          penyanyiController.text,
+                          durasiController.text,
+                          descController.text,
+                        );
+                        Navigator.pop(context);
                       },
                       child: const Icon(Icons.add_box_rounded)),
                 )

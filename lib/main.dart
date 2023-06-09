@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:versyll/Controllers/song_controller.dart';
 import 'package:versyll/Screens/Home.dart';
 import 'package:versyll/Screens/Search.dart';
 import 'package:versyll/Screens/SignUp.dart';
@@ -10,6 +11,7 @@ import 'package:versyll/Screens/login.dart';
 import 'package:versyll/Screens/SongDetail.dart';
 import 'package:versyll/Screens/PlayList.dart';
 import 'package:versyll/Screens/FormAddSong.dart';
+import 'package:versyll/models/Song.dart';
 import 'package:versyll/services/auth_service.dart';
 import 'package:versyll/wrapper.dart';
 
@@ -26,8 +28,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider<AuthService>(
+        ChangeNotifierProvider(
           create: (_) => AuthService(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => SongController(),
         ),
       ],
       child: MaterialApp(
@@ -35,7 +40,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.orange,
         ),
-        // home: LoginPage(),
+        initialRoute: '/',
         routes: {
           '/login': (context) => LoginPage(),
           '/': (context) => Wrapper(),
