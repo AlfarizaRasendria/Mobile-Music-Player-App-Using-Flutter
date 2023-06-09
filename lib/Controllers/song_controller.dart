@@ -115,7 +115,7 @@ class SongController with ChangeNotifier {
               'desc': desc,
             }))
         .then((response) {
-      _songItem.add(Song(
+      _userSong!.add(Song(
         id: json.decode(response.body)["name"].toString(),
         uid: "uid",
         judul: judul,
@@ -133,7 +133,7 @@ class SongController with ChangeNotifier {
       String durasi, String desc) {
     //String tokent = tokenAccess();
     Uri url = Uri.parse(
-        'https://db-versyll-default-rtdb.asia-southeast1.firebasedatabase.app/songs.json');
+        'https://db-versyll-default-rtdb.asia-southeast1.firebasedatabase.app/songs/$id.json');
 
     return http
         .patch(url,
@@ -159,10 +159,10 @@ class SongController with ChangeNotifier {
   //   _userSong.forEach(print);
   // }
 
-  Future<void> deleteArt(String id) {
+  Future<void> deleteSong(String id) {
     //String tokent = tokenAccess();
     Uri url = Uri.parse(
-        'https://db-versyll-default-rtdb.asia-southeast1.firebasedatabase.app/songs.json');
+        'https://db-versyll-default-rtdb.asia-southeast1.firebasedatabase.app/songs/$id.json');
 
     // print(_userSong);
 

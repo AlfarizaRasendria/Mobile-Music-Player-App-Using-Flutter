@@ -43,11 +43,11 @@ class SongRow extends StatelessWidget {
                         color: Colors.white),
                   ),
                   Text(
-                    "b",
-                    // data.penyanyi,
+                    data.penyanyi,
                     style: TextStyle(
+                      color: Colors.white,
                       fontSize: 14,
-                      fontWeight: FontWeight.w100,
+                      fontWeight: FontWeight.w300,
                       letterSpacing: 0.8,
                     ),
                   ),

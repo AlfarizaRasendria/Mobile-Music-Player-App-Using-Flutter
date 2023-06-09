@@ -33,6 +33,9 @@ class HomeBody extends StatelessWidget {
                   color: Colors.white),
             ),
           ),
+          SizedBox(
+            height: 16,
+          ),
           SongBuilder(),
         ],
       ),

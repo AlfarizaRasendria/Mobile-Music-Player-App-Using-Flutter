@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:versyll/Screens/SongDetail.dart';
 import 'package:getwidget/components/avatar/gf_avatar.dart';
 import 'package:getwidget/shape/gf_avatar_shape.dart';
+import 'package:versyll/Screens/components/song_builder_user.dart';
+
+import 'components/song_builder.dart';
 
 class MySong extends StatelessWidget {
   final img;
@@ -65,114 +68,7 @@ class LibraryPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 32),
           ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
-          MySong(
-            img: 'images/song_cover_1.jpg',
-            title: 'Odoriko',
-            singer: 'Vaundy',
-            duration: '3:10',
-          ),
+          SongBuilderUser(),
         ],
       ),
     );

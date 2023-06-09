@@ -7,16 +7,24 @@ import 'package:versyll/Screens/homeBody.dart';
 import 'package:versyll/Components/colors.dart';
 import 'package:versyll/services/auth_service.dart';
 
-class FormAddSong extends StatelessWidget {
-  const FormAddSong({super.key});
+class FormEditSong extends StatelessWidget {
+  String id;
+  FormEditSong({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController judulController = TextEditingController();
-    final TextEditingController penyanyiController = TextEditingController();
-    final TextEditingController imgController = TextEditingController();
-    final TextEditingController durasiController = TextEditingController();
-    final TextEditingController descController = TextEditingController();
+    var data = Provider.of<SongController>(context).userSong;
+    var selectedItem = data.firstWhere((element) => element.id == id);
+    final TextEditingController judulController =
+        TextEditingController(text: selectedItem.judul);
+    final TextEditingController penyanyiController =
+        TextEditingController(text: selectedItem.penyanyi);
+    final TextEditingController imgController =
+        TextEditingController(text: selectedItem.img);
+    final TextEditingController durasiController =
+        TextEditingController(text: selectedItem.durasi);
+    final TextEditingController descController =
+        TextEditingController(text: selectedItem.desc);
     var screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
@@ -178,8 +186,8 @@ class FormAddSong extends StatelessWidget {
                       elevation: 2,
                       onPressed: () {
                         Provider.of<SongController>(context, listen: false)
-                            .addSong(
-                              
+                            .editSong(
+                          selectedItem.id,
                           judulController.text,
                           imgController.text,
                           penyanyiController.text,
